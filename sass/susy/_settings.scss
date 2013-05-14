@@ -5,7 +5,10 @@
 // -----------
 
 $columns              : 4         !default;
-$gutters              : .25       !default;
+
+// Default gutter handling
+// - <value> <before|after|split> <inside|outside>
+$gutters              : .25 after outside !default;
 
 
 // Grid widths [optional]
@@ -39,10 +42,6 @@ $box-sizing           : false     !default;
 // Default container justification
 // - left | center | right
 $container-position   : center    !default;
-
-// Default gutter handling
-// - before | after | split
-$gutter-placement     : after;
 
 
 // Debug

@@ -1,0 +1,63 @@
+// Gutters language parsing
+// =====================
+
+// Prepare default global settings
+$gutter-placement     : after       !default;
+$gutter-method        : outside     !default;
+
+// Parse the gutters shortcut syntax
+@function parse-gutters(
+  $string
+) {
+  $new-gutters        : false;
+  $new-gutter-place   : false;
+  $new-gutter-method  : false;
+
+  $i: 1;
+
+  @while $i <= length($string) {
+    $value  : nth($string,$i);
+    $gutter : false;
+
+    // Gutters keywords
+    @if type-of($value) == string {
+
+      // after | before | split | no-gutters
+      @if $value == after {
+        $new-gutter-place: after;
+      } @else if $value == before {
+        $new-gutter-place: before;
+      } @else if $value == split {
+        $new-gutter-place: split;
+      } @else if $value == no-gutters {
+        $new-gutter-place: no-gutters;
+      }
+
+      // inside | outside
+      @if $value == inside {
+        $new-gutter-method: inside;
+      } @else if $value == outside {
+        $new-gutter-method: outside;
+      }
+
+    // Gutters value (size)
+    } @else if not $new-gutters and type-of($value) == number {
+      $new-gutters: $value;
+    }
+
+    $i: $i + 1;
+  }
+
+  @if $new-gutters {
+    $gutters: $new-gutters;
+  }
+
+  @if $new-gutter-place {
+    $gutter-placement: $new-gutter-place;
+  }
+  @if $new-gutter-method {
+    $gutter-method: $new-gutter-method;
+  }
+
+  @return $gutters;
+}

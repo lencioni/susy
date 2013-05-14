@@ -64,7 +64,7 @@
 // Get the current grid settings as a shorthand list
 @function get-grid(
 ) {
-  $gutter-setting       : $gutters;
+  $gutter-setting       : parse-gutters($gutters);
   $static-setting       : false;
   $isolate-setting      : false;
   $show-grids-setting   : false;
@@ -181,12 +181,15 @@
 
     // columns or gutters
     @else if type-of($value) == list {
-      @if unitless(nth($value,1)) {
+      @if not unitless(nth($value,1)) {
+        $column-width-setting: nth($value,1);
+        $gutters-setting: nth($value,2) / nth($value,1);
+      } @else if not $columns-check {
         $columns-setting: $value;
         $columns-check: true;
       } @else {
-        $column-width-setting: nth($value,1);
-        $gutters-setting: nth($value,2) / nth($value,1);
+        $gutters-setting: nth($value,1);
+        $gutter-place-setting: nth($value,2);
       }
     }
   }

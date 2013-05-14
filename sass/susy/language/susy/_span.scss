@@ -32,9 +32,12 @@
   $new-isolate        : false;
   $new-static         : false;
   $new-columns        : false;
-  $new-gutters        : false;
   $new-column-width   : false;
   $new-flow           : false;
+
+  // Gutters
+  $gutters            : parse-gutters($gutters);
+  $new-gutters        : false;
   $new-gutter-place   : false;
   $gutter-override    : false;
 
