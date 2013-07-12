@@ -231,7 +231,7 @@ Defaults to `:last-child`.
     $media-layout: 30em 60em;   // Between min 30em & max 60em, use closest layout.
     $media-layout: 30em 12 60em;// Use 12 cols between min 30em & max 60em.
     $media-layout: 60em 12 30em;// Same. Larger length will always be max-width.
-    $media-layout : 12 lt-ie9;  // Output is included under `.lt-ie9` class,
+    $media-layout: 12 lt-ie9;   // Output is included under `.lt-ie9` class,
                                 // for use with IE conditional comments
                                 // on the <html> tag.
 
